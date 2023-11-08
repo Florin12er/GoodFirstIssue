@@ -11,7 +11,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
-	</head>
+	
 <style>
 
 body {
@@ -105,8 +105,7 @@ border: 1px solid rgba(154, 161, 171, .15);
 display: none;
 }
 
-.welcome {
-}
+
 
 .welcome h1 {
     font-weight: 700;
@@ -174,6 +173,7 @@ cursor: url(hand.cur), pointer;
 
 
 </style>
+	</head>
 
 <body>
      	<p class="TopLabel"><label class="IssueLabel GoodFirstIssue">Good First Issue</label>.com</p>
@@ -349,22 +349,14 @@ function sortByStars(repos) {
         return repos;
 }
 
-
 function sortBy(value, repositories) {
-
-	switch (value) {
-
-                case "Good First Issue":
-                       	return sortByGoodFirstIssues(repositories); 
-			break;
-
-                case "Stars":
-			return sortByStars(repositories); 
-                        break; 
-
-        }
-
+    if (value === "Good First Issue") {
+        return sortByGoodFirstIssues(repositories);
+    } else if (value === "Stars") {
+        return sortByStars(repositories);
+    }
 }
+
 
 
 function addSlashes(string) {
@@ -463,7 +455,7 @@ function makeTableFromRepos(repositories) {
 
 
 function removeRows(table) {
-	$('table tbody tr').remove();
+    $(table).find('tbody tr').remove();
 }
 
 
@@ -681,3 +673,4 @@ function fetchQuery(query, variables, callback)  {
 
 
 </script>
+
